@@ -355,6 +355,14 @@ body {
       }
     });
 
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      const filtered = allMovies.filter(movie =>
+        movie.title.toLowerCase().includes(query)
+      );
+      renderMovieRow(filtered);
+    });
+
     fetchMovies();
   </script>
 </body>
