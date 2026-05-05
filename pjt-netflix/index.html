@@ -360,6 +360,7 @@ body {
       const filtered = allMovies.filter(movie =>
         movie.title.toLowerCase().includes(query)
       );
+      if (filtered.length) renderHero(filtered[0]);
       renderMovieRow(filtered);
     });
 
