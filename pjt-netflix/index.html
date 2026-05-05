@@ -278,6 +278,33 @@ body {
       }
     }
 
+    function renderHero(movie) {
+      const hero = document.getElementById('hero');
+      const heroInfo = document.getElementById('heroInfo');
+
+      if (movie.backdrop_path) {
+        hero.style.backgroundImage = `url(${IMG_BASE}original${movie.backdrop_path})`;
+      }
+
+      const overview = movie.overview
+        ? movie.overview.slice(0, 150) + (movie.overview.length > 150 ? '...' : '')
+        : '';
+
+      const stars = '⭐'.repeat(Math.round(movie.vote_average / 2));
+
+      heroInfo.innerHTML = `
+        <h1 class="hero-title">${movie.title}</h1>
+        <p class="hero-rating">${stars} ${movie.vote_average.toFixed(1)}</p>
+        <p class="hero-overview">${overview}</p>
+      `;
+    }
+
+    function init(movies) {
+      if (!movies.length) return;
+      renderHero(movies[0]);
+      renderMovieRow(movies);
+    }
+
     fetchMovies();
   </script>
 </body>
