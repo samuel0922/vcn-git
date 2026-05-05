@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brooklyn Gilbert — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <a href="#" class="logo">
+        <span class="logo__icon">B</span>
+        <span class="logo__text">Brooklyn</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link nav__link--active">Home</a></li>
+          <li><a href="#" class="nav__link">About</a></li>
+          <li><a href="#" class="nav__link">Process</a></li>
+          <li><a href="#" class="nav__link">Portfolio</a></li>
+          <li><a href="#" class="nav__link">Blog</a></li>
+          <li><a href="#" class="nav__link">Services</a></li>
+        </ul>
+      </nav>
+
+      <a href="#" class="btn btn--outline">Contact</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+
+        <!-- Left: text -->
+        <div class="hero__text">
+          <p class="hero__sub">Freelance UI Designer &amp; Developer</p>
+          <h1 class="hero__title">Hello, I'm<br /><span>Samuel Changsam Jeon</span></h1>
+          <p class="hero__desc">
+            저는 다양한 산업에 대한 도메인 지식을 바탕으로 기업 경영에 필요한 전략을 기획하고, 실행하는 전문가입니다.
+          </p>
+          <a href="#" class="btn btn--fill">Say Hello!</a>
+
+          <!-- Stats -->
+          <div class="stats">
+            <div class="stats__item">
+              <div class="stats__row">
+                <span class="stats__number" data-target="15">0</span>
+                <span class="stats__suffix"> Y.</span>
+              </div>
+              <p class="stats__label">Experience</p>
+            </div>
+            <div class="stats__divider"></div>
+            <div class="stats__item">
+              <div class="stats__row">
+                <span class="stats__number" data-target="250">0</span>
+                <span class="stats__suffix">+</span>
+              </div>
+              <p class="stats__label">Projects Completed</p>
+            </div>
+            <div class="stats__divider"></div>
+            <div class="stats__item">
+              <div class="stats__row">
+                <span class="stats__number" data-target="58">0</span>
+              </div>
+              <p class="stats__label">Happy Clients</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: image -->
+        <div class="hero__image-wrap">
+          <div class="hero__blob"></div>
+          <img
+            src="https://picsum.photos/seed/brooklyn/400/500"
+            alt="Brooklyn Gilbert"
+            class="hero__img"
+          />
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
