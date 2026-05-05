@@ -258,7 +258,27 @@ body {
   </section>
 
   <script>
-    /* Task 3~7에서 채운다 */
+    const API_KEY = '0fc5b4f8dc99f632e69a7e2971d00b5a';
+    const API_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1`;
+    const IMG_BASE = 'https://image.tmdb.org/t/p/';
+
+    let allMovies = [];
+
+    async function fetchMovies() {
+      try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('API 오류');
+        const data = await res.json();
+        allMovies = data.results;
+        init(allMovies);
+      } catch (err) {
+        document.getElementById('movieRow').innerHTML =
+          '<p class="error-msg">영화 정보를 불러오지 못했습니다.</p>';
+        console.error(err);
+      }
+    }
+
+    fetchMovies();
   </script>
 </body>
 </html>
