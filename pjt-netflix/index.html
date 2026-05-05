@@ -337,6 +337,24 @@ body {
       }).join('');
     }
 
+
+    document.getElementById('scrollLeft').addEventListener('click', () => {
+      document.getElementById('movieRow').scrollLeft -= 500;
+    });
+
+    document.getElementById('scrollRight').addEventListener('click', () => {
+      document.getElementById('movieRow').scrollLeft += 500;
+    });
+
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
     fetchMovies();
   </script>
 </body>
