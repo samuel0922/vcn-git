@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>할일 앱</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>할일 앱</h1>
+
+      <form id="todo-form" class="todo-form">
+        <input
+          id="todo-input"
+          type="text"
+          placeholder="할 일을 입력하세요"
+          autocomplete="off"
+          required
+        />
+        <button id="submit-btn" type="submit">추가</button>
+        <button id="cancel-btn" type="button" class="hidden">취소</button>
+      </form>
+
+      <p id="mode-label" class="mode-label">추가 모드</p>
+
+      <ul id="todo-list" class="todo-list"></ul>
+    </main>
+
+    <template id="todo-item-template">
+      <li class="todo-item">
+        <label class="todo-check">
+          <input type="checkbox" class="todo-toggle" />
+          <span class="todo-text"></span>
+        </label>
+        <div class="todo-actions">
+          <button type="button" class="edit-btn">수정</button>
+          <button type="button" class="delete-btn">삭제</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
