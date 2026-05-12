@@ -1,11 +1,16 @@
+const dns = require("dns");
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+
+// Windows 등에서 IPv6 DNS가 막혀 querySrv ECONNREFUSED 가 날 때, IPv4 우선으로 SRV 조회
+dns.setDefaultResultOrder("ipv4first");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
 const todoRouter = require("./routers/todoRouter");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -45,5 +50,13 @@ async function startServer() {
 
 startServer().catch((error) => {
   console.error("Failed to start server:", error.message);
+  if (String(error.message).includes("querySrv")) {
+    console.error(
+      "[MongoDB] mongodb+srv 는 DNS(SRV) 조회가 필요합니다. " +
+        "DNS를 1.1.1.1 등으로 바꾸고 ipconfig /flushdns 후 재시도하거나, " +
+        "Atlas의 mongodb:// 표준 연결 문자열을 MONGO_URI에 쓰거나, " +
+        "로컬이면 MONGO_URI=mongodb://127.0.0.1:27017/todo-app 로 임시 전환하세요."
+    );
+  }
   process.exit(1);
 });
