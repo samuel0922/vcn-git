@@ -15,11 +15,24 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
+
+// Vite 기본 포트: localhost / 127.0.0.1 은 Origin 이 달라 CORS 를 각각 허용해야 함
+const defaultCorsOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+function parseCorsOrigins() {
+  const raw = process.env.CORS_ORIGIN;
+  if (raw && String(raw).trim()) {
+    return String(raw)
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+  return defaultCorsOrigins;
+}
+const corsOrigins = parseCorsOrigins();
 
 app.use(
   cors({
-    origin: CORS_ORIGIN,
+    origin: corsOrigins.length === 1 ? corsOrigins[0] : corsOrigins,
   })
 );
 app.use(express.json());
